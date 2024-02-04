@@ -1,5 +1,3 @@
-const prettierConfig = require('./prettier.config.js')
-
 module.exports = {
   env: {
     browser: true,
@@ -9,12 +7,11 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
-    'next/core-web-vitals',
-    'next/babel',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -75,11 +72,6 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 0,
-    // Prettier
-    // eslint looks for the prettier config at the top level of the package/app
-    // but the config lives in the `config/` directory. Passing the config here
-    // to get around this.
-    'prettier/prettier': ['error', prettierConfig],
   },
   settings: {
     react: {
