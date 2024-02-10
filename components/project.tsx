@@ -38,7 +38,7 @@ export default function Project({
           <div className="my-4 flex gap-4">
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
-                <button className="flex w-32 items-center justify-center gap-2 rounded-full bg-gray-900 py-3 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105">
+                <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
                   <FaChrome className="text-xl" />
                   Site
                 </button>
@@ -46,7 +46,7 @@ export default function Project({
             )}
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
-                <button className="flex w-32 items-center justify-center gap-2 rounded-full bg-gray-900 py-3 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105">
+                <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
                   <FaCode className="text-xl" />
                   Code
                 </button>
@@ -64,12 +64,13 @@ export default function Project({
           </ul>
         </div>
 
-        <Image
-          src={imageUrl}
-          alt="Project I worked on"
-          quality={95}
-          className="absolute -right-40 top-8 hidden w-[28.25rem] rounded-t-lg shadow-2xl transition
-        group-even:-left-40 
+        <a href={siteUrl || codeUrl} target="_blank" rel="noopener noreferrer">
+          <Image
+            src={imageUrl}
+            alt="Project I worked on"
+            quality={95}
+            className="absolute -right-36 top-8 hidden w-[28.25rem] rounded-t-lg shadow-2xl transition
+        group-even:-left-36 
         group-even:right-[initial]
         group-hover:-translate-x-3
         group-hover:translate-y-3
@@ -78,7 +79,8 @@ export default function Project({
         group-even:group-hover:translate-x-3
         group-even:group-hover:translate-y-3
         group-even:group-hover:rotate-2 sm:block"
-        />
+          />
+        </a>
       </section>
     </motion.div>
   )

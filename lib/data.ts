@@ -1,5 +1,8 @@
 import portfolioImg from '@/public/portfolio.webp'
-import foxTicketReactImg from '@/public/fox-ticket.jpg'
+import portfolioV2Img from '@/public/portfolio-v2.webp'
+import foxTicketImg from '@/public/fox-ticket.jpg'
+import recipeBookImg from '@/public/recipe-book.webp'
+import simpleTimerImg from '@/public/simple-timer.webp'
 
 export type SectionName = (typeof links)[number]['name']
 
@@ -28,21 +31,45 @@ export const links = [
 
 export const projectsData = [
   {
-    title: 'Portfolio',
+    title: 'Portfolio v1',
     description: 'Portfolio site built using React and Material UI.',
-    tags: ['React', 'JavaScript', 'SCSS', 'Material UI'],
+    tags: ['React', 'SCSS', 'Material UI'],
     siteUrl: 'https://attila.pages.dev/',
     codeUrl: 'https://github.com/attila-huszar/portfolio/',
     imageUrl: portfolioImg,
   },
   {
-    title: 'Full Stack School Project',
+    title: 'Portfolio v2',
+    description: 'Portfolio site built with Next.js and Tailwind CSS.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    siteUrl: 'https://attilah.vercel.app/',
+    codeUrl: 'https://github.com/attila-huszar/portfolio-v2/',
+    imageUrl: portfolioV2Img,
+  },
+  {
+    title: 'Ticketing App',
     description:
       'Public transport ticket hub built using React, TypeScript, Tailwind, Node.js, Express and MySQL.',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Node.js', 'MySQl'],
+    tags: ['React', 'TypeScript', 'Node.js', 'MySQl'],
     siteUrl: '',
     codeUrl: 'https://github.com/attila-huszar/fox-ticket/',
-    imageUrl: foxTicketReactImg,
+    imageUrl: foxTicketImg,
+  },
+  {
+    title: 'Recipe Book',
+    description: 'Recipe Book built using vanilla JavaScript.',
+    tags: ['JavaScript'],
+    siteUrl: 'https://recipe-ingredients.pages.dev/',
+    codeUrl: 'https://github.com/attila-huszar/recipe-book/',
+    imageUrl: recipeBookImg,
+  },
+  {
+    title: 'Simple Timer',
+    description: 'Countdown timer built using React.',
+    tags: ['React'],
+    siteUrl: 'https://simpletimer.pages.dev/',
+    codeUrl: 'https://github.com/attila-huszar/countdown-timer/',
+    imageUrl: simpleTimerImg,
   },
 ] as const
 
