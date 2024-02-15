@@ -1,5 +1,6 @@
 import portfolioImg from '@/public/portfolio.webp'
 import portfolioV2Img from '@/public/portfolio-v2.webp'
+import starWarsMovieDb from '@/public/star-wars-moviedb.webp'
 import foxTicketImg from '@/public/fox-ticket.jpg'
 import recipeBookImg from '@/public/recipe-book.webp'
 import simpleTimerImg from '@/public/simple-timer.webp'
@@ -45,6 +46,14 @@ export const projectsData = [
     siteUrl: 'https://attilah.vercel.app/',
     codeUrl: 'https://github.com/attila-huszar/portfolio-v2/',
     imageUrl: portfolioV2Img,
+  },
+  {
+    title: 'Star Wars MovieDb',
+    description: 'Movie database with Redux state management.',
+    tags: ['React', 'Redux'],
+    siteUrl: 'https://starwarsdb.pages.dev/',
+    codeUrl: 'https://github.com/attila-huszar/star-wars-moviedb/',
+    imageUrl: starWarsMovieDb,
   },
   {
     title: 'Ticketing App',
