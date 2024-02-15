@@ -39,7 +39,7 @@ export default function Project({
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
                 <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
-                  <FaChrome className="text-xl" />
+                  <FaChrome className="text-lg" />
                   Site
                 </button>
               </a>
@@ -47,7 +47,7 @@ export default function Project({
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
                 <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
-                  <FaCode className="text-xl" />
+                  <FaCode className="text-lg" />
                   Code
                 </button>
               </a>
