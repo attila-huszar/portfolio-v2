@@ -55,11 +55,10 @@ export default function Intro() {
         className="my-10 text-balance px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
-        <span className="font-bold">Hello, I&apos;m Attila. </span>I&apos;m a
-        <span className="font-bold"> front-end developer. </span>I enjoy
-        building websites & apps. My focus is
-        <span className="font-bold"> React </span>
-        (Next.js).
+        <span className="font-bold">Greetings! I&apos;m Attila, </span>
+        enthusiastic <span className="font-bold">front-end developer </span>
+        specializing in crafting engaging and performant websites & apps,
+        primarily with <span className="font-bold">React </span>(Next.js).
       </motion.h1>
 
       <motion.div
