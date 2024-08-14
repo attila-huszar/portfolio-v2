@@ -10,7 +10,7 @@ import {
   Hr,
 } from '@react-email/components'
 
-type ContactFormEmailProps = {
+interface ContactFormEmailProps {
   message: string
   senderEmail: string
 }
@@ -34,7 +34,7 @@ export default function ContactFormEmail({
               <Text>{message}</Text>
               <Hr />
               <Text>
-                The sender's email is:{' '}
+                {"The sender's email is: "}
                 <a href={`mailto:${senderEmail}`}>{senderEmail}</a>
               </Text>
             </Section>

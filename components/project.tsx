@@ -32,13 +32,15 @@ export default function Project({
         opacity: opacityProgress,
       }}
       className="group mb-3 last:mb-0 sm:mb-8">
-      <section className="relative max-w-[42rem] overflow-hidden rounded-lg border border-black/5 bg-gray-100 transition hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8">
-        <div className="flex h-full flex-col px-5 pb-7 pt-4 sm:max-w-[50%] sm:pl-10 sm:pr-2 sm:pt-10 sm:group-even:ml-[18rem]">
+      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-100 transition hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8">
+        <div className="flex h-full flex-col px-5 pb-7 pt-4 sm:max-w-[50%] sm:pl-10 sm:pr-2 sm:pt-10 sm:group-even:ml-72">
           <h3 className="text-2xl font-semibold">{title}</h3>
           <div className="my-4 flex gap-4">
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
-                <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
+                <button
+                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110"
+                  type="button">
                   <FaChrome className="text-lg" />
                   Site
                 </button>
@@ -46,7 +48,9 @@ export default function Project({
             )}
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
-                <button className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110">
+                <button
+                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110"
+                  type="button">
                   <FaCode className="text-lg" />
                   Code
                 </button>
@@ -64,7 +68,11 @@ export default function Project({
           </ul>
         </div>
 
-        <a href={siteUrl || codeUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={siteUrl || codeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="View project">
           <Image
             src={imageUrl}
             alt="Project I worked on"

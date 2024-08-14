@@ -4,12 +4,12 @@ import React, { useEffect, useState, createContext, useContext } from 'react'
 
 type Theme = 'light' | 'dark'
 
-type ThemeContextType = {
+interface ThemeContext {
   theme: Theme
   toggleTheme: () => void
 }
 
-const ThemeContext = createContext<ThemeContextType | null>(null)
+const ThemeContext = createContext<ThemeContext | null>(null)
 
 export default function ThemeContextProvider({
   children,

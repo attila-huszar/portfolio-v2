@@ -32,7 +32,7 @@ export default function Intro() {
               width={128}
               height={128}
               priority
-              className="h-32 w-32 rounded-full border-[0.25rem] border-white object-cover shadow-xl"
+              className="size-32 rounded-full border-[0.25rem] border-white object-cover shadow-xl"
             />
           </motion.div>
 
@@ -52,7 +52,7 @@ export default function Intro() {
       </div>
 
       <motion.h1
-        className="my-10 text-balance px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        className="my-10 text-balance px-4 text-2xl font-medium !leading-normal sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
         <span className="font-bold">Greetings! I&apos;m Attila, </span>
@@ -89,14 +89,16 @@ export default function Intro() {
           className="borderBlack cursor-pointer rounded-full bg-white p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
           href="https://www.linkedin.com/in/attilahuszar/"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+          title="LinkedIn">
           <FaLinkedinIn />
         </a>
         <a
           className="borderBlack cursor-pointer rounded-full bg-white  p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
           href="https://github.com/attila-huszar/"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+          title="GitHub">
           <FaGithub />
         </a>
       </motion.div>

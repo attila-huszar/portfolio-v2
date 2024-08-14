@@ -80,7 +80,7 @@ export const projectsData = [
     codeUrl: 'https://github.com/attila-huszar/countdown-timer/',
     imageUrl: simpleTimerImg,
   },
-] as const
+]
 
 export const skillsData = [
   'HTML',
