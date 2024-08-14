@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 const config = {
-  plugins: ['prettier-plugin-tailwindcss'],
+  plugins: ['eslint-plugin-tailwindcss'],
   endOfLine: 'lf',
   tabWidth: 2,
   semi: false,
@@ -10,4 +10,4 @@ const config = {
   arrowParens: 'avoid',
 }
 
-module.exports = config
+export default config
