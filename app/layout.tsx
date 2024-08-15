@@ -6,10 +6,11 @@ import Footer from '@/components/footer'
 import ThemeSwitch from '@/components/theme-switch'
 import ThemeContextProvider from '@/context/theme-context'
 import { Toaster } from 'react-hot-toast'
+import type { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Attila Huszár | Web Dev',
   description:
     'Developer based in Budapest, passionate about building web applications, learning new technologies, traveling and exploring new places.',

@@ -1,18 +1,9 @@
 'use client'
 
-import React, { useState, createContext, useContext } from 'react'
-import type { SectionName } from '../lib/data'
+import { useState, createContext, useContext } from 'react'
+import type { SectionName, ActiveSection } from '@/types/Section'
 
-interface ActiveSectionContext {
-  activeSection: SectionName
-  setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>
-  timeOfLastClick: number
-  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>
-}
-
-export const ActiveSectionContext = createContext<ActiveSectionContext | null>(
-  null,
-)
+export const ActiveSectionContext = createContext<ActiveSection | null>(null)
 
 export default function ActiveSectionContextProvider({
   children,

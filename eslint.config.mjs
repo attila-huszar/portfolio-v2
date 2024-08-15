@@ -50,6 +50,7 @@ export default tseslint.config(
       prettier: prettierPlugin,
     },
     rules: {
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       'prettier/prettier': 'warn',
     },
     linterOptions: {

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { BsChevronCompactRight } from 'react-icons/bs'
 import { FaFileArrowDown, FaGithub, FaLinkedinIn } from 'react-icons/fa6'
-import { useSectionInView } from '@/lib/hooks'
+import { useSectionInView } from '@/hooks/useSectionInView'
 import { useActiveSectionContext } from '@/context/active-section-context'
 
 export default function Intro() {
@@ -27,7 +27,7 @@ export default function Intro() {
               duration: 0.2,
             }}>
             <Image
-              src="/Attila_Huszar_pic_sq.webp"
+              src="/images/Attila_Huszar_pic_sq.webp"
               alt="Developer portrait"
               width={128}
               height={128}
@@ -55,9 +55,9 @@ export default function Intro() {
         className="my-10 text-balance px-4 text-2xl font-medium !leading-normal sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
-        <span className="font-bold">Greetings! I&apos;m Attila, </span>
+        <span className="font-bold">{"Greetings! I'm Attila, "}</span>
         enthusiastic <span className="font-bold">front-end developer </span>
-        specializing in crafting engaging and performant websites & apps,
+        specialized in crafting engaging and performant websites & apps,
         primarily with <span className="font-bold">React </span>(Next.js).
       </motion.h1>
 
@@ -75,14 +75,14 @@ export default function Intro() {
             setActiveSection('Contact')
             setTimeOfLastClick(Date.now())
           }}>
-          Contact me here{' '}
+          {'Contact me here '}
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />
         </Link>
         <a
           className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
           href="/Attila_Huszar_CV.pdf"
           download>
-          Download CV{' '}
+          {'Download CV '}
           <FaFileArrowDown className="opacity-60 transition group-hover:translate-y-1" />
         </a>
         <a

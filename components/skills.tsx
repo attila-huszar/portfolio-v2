@@ -1,7 +1,7 @@
 'use client'
 
-import { skillsData } from '@/lib/data'
-import { useSectionInView } from '@/lib/hooks'
+import info from '@/assets/info.json'
+import { useSectionInView } from '@/hooks/useSectionInView'
 import { motion } from 'framer-motion'
 import SectionHeading from './section-heading'
 
@@ -29,7 +29,7 @@ export default function Skills() {
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40">
       <SectionHeading>My skills</SectionHeading>
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-        {skillsData.map((skill, index) => (
+        {info.skills.map((skill, index) => (
           <motion.li
             className="borderBlack rounded-xl bg-white px-5 py-3 dark:bg-white/10 dark:text-white/80"
             key={index}

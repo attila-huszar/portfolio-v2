@@ -1,13 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { projectsData } from '@/lib/data'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { FaChrome } from 'react-icons/fa6'
 import { FaCode } from 'react-icons/fa6'
-
-type ProjectProps = (typeof projectsData)[number]
+import type { ProjectProps } from '@/types/ProjectProps'
 
 export default function Project({
   title,
@@ -72,12 +70,8 @@ export default function Project({
           href={siteUrl || codeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          title="View project">
-          <Image
-            src={imageUrl}
-            alt="Project I worked on"
-            quality={95}
-            className="absolute -right-36 top-8 hidden w-[28.25rem] rounded-t-lg shadow-2xl transition
+          title="View project"
+          className="absolute -right-36 top-8 hidden h-full w-[28.5rem] transition
         group-even:-left-36 
         group-even:right-[initial]
         group-hover:-translate-x-3
@@ -86,7 +80,12 @@ export default function Project({
         group-hover:scale-[1.04]
         group-even:group-hover:translate-x-3
         group-even:group-hover:translate-y-3
-        group-even:group-hover:rotate-2 sm:block"
+        group-even:group-hover:rotate-2 sm:block">
+          <Image
+            src={imageUrl}
+            alt="Project I worked on"
+            fill
+            className="rounded-t-lg object-cover object-top shadow-2xl"
           />
         </a>
       </section>

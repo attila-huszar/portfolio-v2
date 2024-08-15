@@ -3,8 +3,30 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { links } from '@/lib/data'
 import { useActiveSectionContext } from '@/context/active-section-context'
+
+export const links = [
+  {
+    name: 'Home',
+    hash: '#home',
+  },
+  {
+    name: 'About',
+    hash: '#about',
+  },
+  {
+    name: 'Projects',
+    hash: '#projects',
+  },
+  {
+    name: 'Skills',
+    hash: '#skills',
+  },
+  {
+    name: 'Contact',
+    hash: '#contact',
+  },
+] as const
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =

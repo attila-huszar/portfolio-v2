@@ -10,15 +10,13 @@ import {
   Hr,
 } from '@react-email/components'
 
-interface ContactFormEmailProps {
-  message: string
-  senderEmail: string
-}
-
 export default function ContactFormEmail({
   message,
   senderEmail,
-}: ContactFormEmailProps) {
+}: {
+  message: string
+  senderEmail: string
+}) {
   return (
     <Html>
       <Tailwind>

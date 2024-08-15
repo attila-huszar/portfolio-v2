@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useSectionInView } from '@/lib/hooks'
+import { useSectionInView } from '@/hooks/useSectionInView'
 import { sendEmail } from '@/actions/sendEmail'
 import SectionHeading from './section-heading'
 import SubmitBtn from './submit-btn'
@@ -30,23 +30,27 @@ export default function Contact() {
       <SectionHeading>Contact me</SectionHeading>
 
       <p className="-mt-6 text-gray-700 dark:text-white/80">
-        Please contact me directly at{' '}
+        {'Please contact me directly at '}
         <a className="underline" href="mailto:attila.huszar@outlook.com">
           attila.huszar@outlook.com
-        </a>{' '}
-        or through this form.
+        </a>
+        {' or through this form.'}
       </p>
 
       <form
         className="mt-10 flex flex-col dark:text-black"
         action={formData => {
-          void sendEmail(formData).then(error => {
-            if (error) {
-              toast.error(error)
-              return
-            }
-            toast.success('Email sent successfully!')
-          })
+          sendEmail(formData)
+            .then(() => {
+              toast.success('Email sent successfully!')
+            })
+            .catch((error: unknown) => {
+              toast.error(
+                error instanceof Error
+                  ? error.message
+                  : 'Unknown error occurred.',
+              )
+            })
         }}>
         <input
           className="borderBlack h-14 rounded-lg px-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white/100"

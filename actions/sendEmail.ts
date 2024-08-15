@@ -2,7 +2,6 @@
 
 import { createElement } from 'react'
 import { Resend } from 'resend'
-import { validateString, getErrorMessage } from '@/lib/utils'
 import ContactFormEmail from '@/email/contact-form-email'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -11,25 +10,42 @@ export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
 
-  if (!validateString(senderEmail, 500)) {
-    return 'Invalid sender email'
+  if (!/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim.test(String(senderEmail))) {
+    throw new Error('Invalid email address')
   }
-  if (!validateString(message, 5000)) {
-    return 'Invalid message'
+
+  if (!message || typeof message !== 'string' || message.length > 5000) {
+    throw new Error('Invalid message')
   }
 
   try {
     await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
       to: 'attila.huszar@outlook.com',
-      subject: 'Message from contact form',
-      reply_to: senderEmail,
+      subject: 'Message from portfolio contact form',
+      reply_to: String(senderEmail),
       react: createElement(ContactFormEmail, {
         message: message,
-        senderEmail: senderEmail,
+        senderEmail: String(senderEmail),
       }),
     })
   } catch (error: unknown) {
-    return getErrorMessage(error)
+    throw new Error(getErrorMessage(error))
   }
+}
+
+function getErrorMessage(error: unknown): string {
+  let message: string
+
+  if (error instanceof Error) {
+    message = error.message
+  } else if (error && typeof error === 'object' && 'message' in error) {
+    message = String(error.message)
+  } else if (typeof error === 'string') {
+    message = error
+  } else {
+    message = 'Something went wrong'
+  }
+
+  return message
 }
