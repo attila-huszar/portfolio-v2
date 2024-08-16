@@ -7,6 +7,8 @@ import { BsChevronCompactRight } from 'react-icons/bs'
 import { FaFileArrowDown, FaGithub, FaLinkedinIn } from 'react-icons/fa6'
 import { useSectionInView } from '@/hooks/useSectionInView'
 import { useActiveSectionContext } from '@/context/active-section-context'
+import Markdown from 'markdown-to-jsx'
+import info from '@/assets/info.json'
 
 export default function Intro() {
   const { ref } = useSectionInView('Home', 0.5)
@@ -55,10 +57,7 @@ export default function Intro() {
         className="my-10 text-balance px-4 text-2xl font-medium !leading-normal sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
-        <span className="font-bold">{"Greetings! I'm Attila, "}</span>
-        enthusiastic <span className="font-bold">front-end developer </span>
-        specialized in crafting engaging and performant websites & apps,
-        primarily with <span className="font-bold">React </span>(Next.js).
+        <Markdown>{info.intro}</Markdown>
       </motion.h1>
 
       <motion.div
@@ -70,19 +69,19 @@ export default function Intro() {
         }}>
         <Link
           href="#contact"
-          className="group flex items-center gap-1 rounded-full bg-gray-900 px-7 py-3 text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105"
+          className="group flex items-center gap-1 rounded-full bg-slate-600 px-7 py-3 text-white outline-none transition hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
           onClick={() => {
             setActiveSection('Contact')
             setTimeOfLastClick(Date.now())
           }}>
-          {'Contact me here '}
+          Contact me here
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />
         </Link>
         <a
           className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
           href="/Attila_Huszar_CV.pdf"
           download>
-          {'Download CV '}
+          Download CV
           <FaFileArrowDown className="opacity-60 transition group-hover:translate-y-1" />
         </a>
         <a

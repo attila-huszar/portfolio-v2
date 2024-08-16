@@ -30,14 +30,14 @@ export default function Project({
         opacity: opacityProgress,
       }}
       className="group mb-3 last:mb-0 sm:mb-8">
-      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-100 transition hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8">
+      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-200 transition hover:bg-gray-300 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8">
         <div className="flex h-full flex-col px-5 pb-7 pt-4 sm:max-w-[50%] sm:pl-10 sm:pr-2 sm:pt-10 sm:group-even:ml-72">
           <h3 className="text-2xl font-semibold">{title}</h3>
           <div className="my-4 flex gap-4">
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110"
+                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
                   type="button">
                   <FaChrome className="text-lg" />
                   Site
@@ -47,7 +47,7 @@ export default function Project({
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-gray-900 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-gray-950 focus:scale-110"
+                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm uppercase tracking-wider text-white outline-none transition hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
                   type="button">
                   <FaCode className="text-lg" />
                   Code
@@ -58,7 +58,7 @@ export default function Project({
           <ul className="mt-4 flex flex-wrap gap-2 sm:mt-auto">
             {tags.map((tag, index) => (
               <li
-                className="rounded-full bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:text-white/70"
+                className="rounded-full bg-slate-700 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:bg-gray-900 dark:text-white/75"
                 key={index}>
                 {tag}
               </li>
