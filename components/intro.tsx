@@ -93,7 +93,7 @@ export default function Intro() {
           <FaLinkedinIn />
         </a>
         <a
-          className="borderBlack cursor-pointer rounded-full bg-white  p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
+          className="borderBlack cursor-pointer rounded-full bg-white p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
           href="https://github.com/attila-huszar/"
           target="_blank"
           rel="noopener noreferrer"

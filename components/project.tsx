@@ -71,16 +71,7 @@ export default function Project({
           target="_blank"
           rel="noopener noreferrer"
           title="View project"
-          className="absolute -right-36 top-8 hidden h-full w-[28.5rem] transition
-        group-even:-left-36 
-        group-even:right-[initial]
-        group-hover:-translate-x-3
-        group-hover:translate-y-3
-        group-hover:-rotate-2
-        group-hover:scale-[1.04]
-        group-even:group-hover:translate-x-3
-        group-even:group-hover:translate-y-3
-        group-even:group-hover:rotate-2 sm:block">
+          className="absolute -right-36 top-8 hidden h-full w-[28.5rem] transition group-even:-left-36 group-even:right-[initial] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 group-hover:scale-[1.04] group-even:group-hover:translate-x-3 group-even:group-hover:translate-y-3 group-even:group-hover:rotate-2 sm:block">
           <Image
             src={imageUrl}
             alt="Project I worked on"
