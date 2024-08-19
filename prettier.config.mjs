@@ -1,6 +1,5 @@
 /** @type {import("prettier").Config} */
 const config = {
-  plugins: ['eslint-plugin-tailwindcss'],
   endOfLine: 'lf',
   tabWidth: 2,
   semi: false,
@@ -8,6 +7,7 @@ const config = {
   trailingComma: 'all',
   singleQuote: true,
   arrowParens: 'avoid',
+  plugins: ['prettier-plugin-tailwindcss'],
 }
 
 export default config
