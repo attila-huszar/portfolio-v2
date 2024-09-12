@@ -2,7 +2,8 @@
 import { fixupPluginRules } from '@eslint/compat'
 import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
+import { config, configs, parser } from 'typescript-eslint'
+import importX from 'eslint-plugin-import-x'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
 import tailwind from 'eslint-plugin-tailwindcss'
@@ -22,11 +23,13 @@ function fixCompatibility(...configNames) {
   })
 }
 
-export default tseslint.config(
+export default config(
   eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...configs.strictTypeChecked,
+  ...configs.stylisticTypeChecked,
   ...tailwind.configs['flat/recommended'],
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   prettierConfig,
   /**
    * If you want to add other ESLint configs / plugins:
@@ -36,7 +39,7 @@ export default tseslint.config(
   ...fixCompatibility('next'),
   {
     languageOptions: {
-      parser: tseslint.parser,
+      parser: parser,
       ecmaVersion: 2022,
       sourceType: 'module',
       parserOptions: {
@@ -64,7 +67,7 @@ export default tseslint.config(
       'prettier.config.mjs',
       'postcss.config.js',
     ],
-    ...tseslint.configs.disableTypeChecked,
+    ...configs.disableTypeChecked,
   },
   {
     ignores: [

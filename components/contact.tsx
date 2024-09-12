@@ -1,11 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { toast } from 'react-hot-toast'
 import { useSectionInView } from '@/hooks/useSectionInView'
 import { sendEmail } from '@/actions/sendEmail'
 import SectionHeading from './section-heading'
 import SubmitBtn from './submit-btn'
-import toast from 'react-hot-toast'
 
 export default function Contact() {
   const { ref } = useSectionInView('Contact')

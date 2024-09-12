@@ -3,9 +3,8 @@
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { FaChrome } from 'react-icons/fa6'
-import { FaCode } from 'react-icons/fa6'
-import type { ProjectProps } from '@/types/ProjectProps'
+import { FaChrome, FaCode } from 'react-icons/fa6'
+import { type ProjectProps } from '@/types/ProjectProps'
 
 export default function Project({
   title,
