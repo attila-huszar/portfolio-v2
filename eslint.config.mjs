@@ -1,5 +1,5 @@
-import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -9,7 +9,10 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.config({
     extends: ['eslint:recommended', 'next/typescript', 'prettier'],
-    ignorePatterns: ['node_modules', '.next', 'out'],
+    parserOptions: {
+      project: true,
+    },
+    ignorePatterns: ['node_modules', '.next', 'out', '*.mjs'],
   }),
 ]
 
