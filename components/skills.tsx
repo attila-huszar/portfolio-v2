@@ -2,7 +2,7 @@
 
 import info from '@/assets/info.json'
 import { useSectionInView } from '@/hooks/useSectionInView'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import SectionHeading from './section-heading'
 
 const fadeInAnimationVariants = {

@@ -1,7 +1,7 @@
 'use client'
 
 import SectionHeading from './section-heading'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useSectionInView } from '@/hooks/useSectionInView'
 import Markdown from 'markdown-to-jsx'
 import info from '@/assets/info.json'
