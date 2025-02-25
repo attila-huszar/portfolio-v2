@@ -7,7 +7,7 @@ import Markdown from 'markdown-to-jsx'
 import info from '@/assets/info.json'
 
 export default function About() {
-  const { ref } = useSectionInView('About')
+  const { ref } = useSectionInView('#about')
 
   return (
     <motion.section

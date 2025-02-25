@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, createContext, useContext } from 'react'
-import type { SectionName, ActiveSection } from '@/types/Section'
+import type { ActiveSection, SectionHash } from '@/types/Section'
 
 export const ActiveSectionContext = createContext<ActiveSection | null>(null)
 
 export default function ActiveSectionContextProvider({
   children,
 }: React.PropsWithChildren) {
-  const [activeSection, setActiveSection] = useState<SectionName>('Home')
+  const [activeSection, setActiveSection] = useState<SectionHash>('#home')
   const [timeOfLastClick, setTimeOfLastClick] = useState(0)
 
   return (
