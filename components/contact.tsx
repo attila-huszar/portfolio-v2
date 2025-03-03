@@ -26,7 +26,8 @@ export default function Contact() {
       }}
       viewport={{
         once: true,
-      }}>
+      }}
+    >
       <SectionHeading>Contact me</SectionHeading>
 
       <p className="-mt-6 text-gray-700 dark:text-white/80">
@@ -39,7 +40,7 @@ export default function Contact() {
 
       <form
         className="mt-10 flex flex-col dark:text-black"
-        action={formData => {
+        action={(formData) => {
           sendEmail(formData)
             .then(() => {
               toast.success('Email sent successfully!')
@@ -51,7 +52,8 @@ export default function Contact() {
                   : 'Unknown error occurred.',
               )
             })
-        }}>
+        }}
+      >
         <input
           className="borderBlack h-14 rounded-lg px-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white/100"
           name="senderEmail"

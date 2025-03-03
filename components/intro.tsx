@@ -16,9 +16,10 @@ export default function Intro() {
 
   return (
     <section
-      ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] scroll-mt-[100rem] text-center sm:mb-0">
+      ref={ref}
+      className="mb-28 max-w-[50rem] scroll-mt-[100rem] text-center sm:mb-0"
+    >
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -27,7 +28,8 @@ export default function Intro() {
             transition={{
               type: 'tween',
               duration: 0.2,
-            }}>
+            }}
+          >
             <Image
               src="/images/Attila_Huszar_pic_sq.webp"
               alt="Developer portrait"
@@ -47,7 +49,8 @@ export default function Intro() {
               stiffness: 125,
               delay: 0.1,
               duration: 0.7,
-            }}>
+            }}
+          >
             👋
           </motion.span>
         </div>
@@ -56,7 +59,8 @@ export default function Intro() {
       <motion.h1
         className="my-10 px-4 text-2xl !leading-normal font-medium text-balance sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}>
+        animate={{ opacity: 1, y: 0 }}
+      >
         <Markdown>{info.intro}</Markdown>
       </motion.h1>
 
@@ -66,21 +70,24 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.1,
-        }}>
+        }}
+      >
         <Link
           href="#contact"
           className="group flex items-center gap-1 rounded-full bg-slate-600 px-7 py-3 text-white transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
           onClick={() => {
             setActiveSection('#contact')
             setTimeOfLastClick(Date.now())
-          }}>
+          }}
+        >
           Contact me here
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />
         </Link>
         <a
           className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 transition outline-none hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
           href="/Attila_Huszar_CV.pdf"
-          download>
+          download
+        >
           Download CV
           <FaFileArrowDown className="opacity-60 transition group-hover:translate-y-1" />
         </a>
@@ -89,7 +96,8 @@ export default function Intro() {
           href="https://www.linkedin.com/in/attilahuszar/"
           target="_blank"
           rel="noopener noreferrer"
-          title="LinkedIn">
+          title="LinkedIn"
+        >
           <FaLinkedinIn />
         </a>
         <a
@@ -97,7 +105,8 @@ export default function Intro() {
           href="https://github.com/attila-huszar/"
           target="_blank"
           rel="noopener noreferrer"
-          title="GitHub">
+          title="GitHub"
+        >
           <FaGithub />
         </a>
       </motion.div>
