@@ -7,18 +7,18 @@ import Project from './project'
 import info from '@/assets/info.json'
 
 export default function Projects() {
-  const { ref } = useSectionInView('#projects')
+  const { ref } = useSectionInView('#projects', 0.3)
 
   return (
-    <section ref={ref} id="projects" className="mb-28 scroll-mt-28">
+    <section id="projects" ref={ref} className="mb-28 scroll-mt-28">
       <SectionHeading>My projects</SectionHeading>
-      <div>
+      <>
         {info.projects.map((project, index) => (
           <Fragment key={index}>
             <Project {...project} />
           </Fragment>
         ))}
-      </div>
+      </>
     </section>
   )
 }
