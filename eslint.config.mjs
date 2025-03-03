@@ -8,7 +8,11 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ['eslint:recommended', 'next/typescript', 'prettier'],
+    extends: ['eslint:recommended', 'next/typescript'],
+    plugins: ['prettier'],
+    rules: {
+      'prettier/prettier': 'warn',
+    },
     parserOptions: {
       project: true,
     },
