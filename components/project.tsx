@@ -37,7 +37,7 @@ export default function Project({
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaChrome className="text-lg" />
@@ -48,7 +48,7 @@ export default function Project({
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaCode className="text-lg" />

@@ -1,14 +1,22 @@
 {
-  "intro": "**Greetings! I'm Attila**, enthusiastic **front-end developer** specialized in creating engaging and performant websites & apps, primarily with **React** (Next.js).",
-  "about": "After graduating with a degree in socio-economics and living a few years abroad, I made the decision to follow my passion for programming and enrolled in a coding bootcamp, where I gained expertise in full-stack web development. My main stack includes **JavaScript, TypeScript, React, and Next.js**. Additionally, I'm also familiar with Node.js, Express, and MySQL.<br /><br />What I find most enjoyable about programming is the problem-solving aspect; there's a sense of satisfaction when I figure out a solution to a challenging problem. It's such a rewarding journey to keep learning and exploring new technologies.<br /><br />When I'm not coding, I like playing video and board games, or taking trips, whether it's cycling in nature or venturing further to explore new places.",
+  "intro": "**Greetings! I'm Attila**, enthusiastic **frontend focused fullstack developer** specialized in creating engaging and performant websites & apps, primarily with **React and Node.js**.",
+  "about": "After graduating with a degree in socio-economics and living some years abroad, I made the decision to follow my passion for programming and started working as a frontend developer at NIX Tech Budapest. My main stack became **JavaScript, TypeScript and React**. Additionally, I've gained knowledge with Node.js, Express, SQL, and Docker.<br /><br />What I find most enjoyable about programming is the problem-solving aspect; there's a sense of satisfaction when I figure out a solution to a challenging problem. It's such a rewarding journey to keep learning and exploring new technologies.<br /><br />When I'm not coding, I like playing video and board games, or taking trips, whether it's cycling in nature or venturing further to explore new places.",
   "projects": [
     {
-      "title": "Portfolio v1",
-      "description": "Portfolio site built using React and Material UI.",
-      "tags": ["React", "SCSS", "Material UI"],
-      "siteUrl": "https://attila.pages.dev/",
-      "codeUrl": "https://github.com/attila-huszar/portfolio/",
-      "imageUrl": "/images/portfolio.webp"
+      "title": "Bookshop Frontend",
+      "description": "Webshop built using React and Redux.",
+      "tags": ["TypeScript", "React", "Redux", "Stripe", "Formik"],
+      "siteUrl": "https://book-shop.pages.dev/",
+      "codeUrl": "https://github.com/attila-huszar/bookshop-client/",
+      "imageUrl": "/images/bookshop.webp"
+    },
+    {
+      "title": "Bookshop Backend",
+      "description": "Performant Webshop backend, with Stripe integration.",
+      "tags": ["Bun", "Hono", "Drizzle", "SQLite", "Docker", "AWS"],
+      "siteUrl": "https://book-shop.pages.dev/",
+      "codeUrl": "https://github.com/attila-huszar/bookshop-server/",
+      "imageUrl": "/images/bookshop.webp"
     },
     {
       "title": "Portfolio v2",
@@ -17,6 +25,14 @@
       "siteUrl": "https://attilah.vercel.app/",
       "codeUrl": "https://github.com/attila-huszar/portfolio-v2/",
       "imageUrl": "/images/portfolio-v2.webp"
+    },
+    {
+      "title": "Portfolio v1",
+      "description": "Portfolio site built using React and Material UI.",
+      "tags": ["React", "SCSS", "Material UI"],
+      "siteUrl": "https://attila.pages.dev/",
+      "codeUrl": "https://github.com/attila-huszar/portfolio/",
+      "imageUrl": "/images/portfolio.webp"
     },
     {
       "title": "Star Wars MovieDb",
@@ -61,18 +77,20 @@
     "Next.js",
     "Node.js",
     "Express",
-    "MySQL",
-    "Sequelize",
-    "SCSS",
-    "Tailwind",
-    "Material UI",
-    "Framer Motion",
-    "Graphic design",
+    "SQL",
+    "ORM",
+    "Docker",
     "Git",
+    "GitHub Actions",
     "CI/CD",
     "Postman",
     "Jest",
-    "Jira"
+    "Jira",
+    "Agile",
+    "Figma",
+    "Tailwind",
+    "Material UI",
+    "Framer Motion"
   ],
   "experience": [
     {
