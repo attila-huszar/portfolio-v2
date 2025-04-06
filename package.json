@@ -2,17 +2,17 @@
   "name": "portfolio-v2",
   "version": "2.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "next lint",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@react-email/components": "^0.0.36",
     "@react-email/tailwind": "^1.0.4",
-    "@tailwindcss/postcss": "^4.1.3",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "markdown-to-jsx": "^7.7.4",
     "motion": "^12.6.3",
@@ -24,10 +24,13 @@
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
     "resend": "^4.2.0",
-    "sharp": "^0.34.0",
-    "tailwindcss": "^4.1.3"
+    "sharp": "^0.34.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250406.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@opennextjs/cloudflare": "~1.0.0-beta.0 || ^1.0.0",
+    "@tailwindcss/postcss": "^4",
     "@types/eslint": "^9.6.1",
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
@@ -41,7 +44,9 @@
     "eslint-plugin-prettier": "^5.2.6",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.0"
+    "typescript-eslint": "^8.29.0",
+    "wrangler": "^4.7.2"
   }
 }

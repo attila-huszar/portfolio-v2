@@ -1,7 +1,5 @@
 import { Toaster } from 'react-hot-toast'
 import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ThemeContextProvider from '@/context/theme-context'
@@ -36,8 +34,6 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
             <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   )
