@@ -22,7 +22,7 @@
       "title": "Portfolio v2",
       "description": "Portfolio site built with Next.js and Tailwind CSS.",
       "tags": ["Next.js", "TypeScript", "Tailwind"],
-      "siteUrl": "https://attilah.vercel.app/",
+      "siteUrl": "https://attila.pages.dev/",
       "codeUrl": "https://github.com/attila-huszar/portfolio-v2/",
       "imageUrl": "/images/portfolio-v2.webp"
     },
@@ -30,7 +30,7 @@
       "title": "Portfolio v1",
       "description": "Portfolio site built using React and Material UI.",
       "tags": ["React", "SCSS", "Material UI"],
-      "siteUrl": "https://attila.pages.dev/",
+      "siteUrl": "https://attilaweb.pages.dev/",
       "codeUrl": "https://github.com/attila-huszar/portfolio/",
       "imageUrl": "/images/portfolio.webp"
     },
