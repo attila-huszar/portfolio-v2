@@ -1,11 +1,5 @@
 'use server'
 
-import { createElement } from 'react'
-import { Resend } from 'resend'
-import ContactFormEmail from '@/email/contact-form-email'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
@@ -19,16 +13,24 @@ export const sendEmail = async (formData: FormData) => {
   }
 
   try {
-    await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>',
-      to: 'attila.huszar@outlook.com',
-      subject: 'Message from portfolio contact form',
-      replyTo: String(senderEmail),
-      react: createElement(ContactFormEmail, {
-        message: message,
-        senderEmail: String(senderEmail),
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Contact Form <onboarding@resend.dev>',
+        to: 'attila.huszar@outlook.com',
+        reply_to: String(senderEmail),
+        subject: 'Message from portfolio contact form',
+        html: `<p>Email: ${String(senderEmail)}</p><p>Message: ${message}</p>`,
       }),
     })
+
+    if (!response.ok) {
+      throw new Error('Failed to send email')
+    }
   } catch (error: unknown) {
     throw new Error(getErrorMessage(error))
   }
