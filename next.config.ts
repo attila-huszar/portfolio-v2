@@ -1,3 +1,4 @@
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -6,8 +7,11 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+if (process.env.NODE_ENV === 'development') {
+  const setupPlatform = async () => {
+    await setupDevPlatform()
+  }
+  setupPlatform()
+}
 
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
-initOpenNextCloudflareForDev()
+export default nextConfig
