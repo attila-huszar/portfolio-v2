@@ -30,14 +30,16 @@ export default function Project({
       }}
       className="group mb-3 last:mb-0 sm:mb-8"
     >
-      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-200 transition hover:bg-gray-300 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">
+      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-400/10 transition hover:bg-gray-400/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8 dark:bg-white/10 dark:text-gray-100 dark:hover:bg-white/20">
         <div className="flex h-full flex-col px-5 pt-4 pb-7 sm:max-w-[50%] sm:pt-10 sm:pr-2 sm:pl-10 sm:group-even:ml-72">
-          <h3 className="text-2xl font-semibold">{title}</h3>
+          <h3 className="text-2xl font-semibold select-none text-shadow-md sm:text-shadow-[initial]">
+            {title}
+          </h3>
           <div className="my-4 flex gap-4">
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-gray-100 uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaChrome className="text-lg" />
@@ -48,7 +50,7 @@ export default function Project({
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-600 py-2 text-sm tracking-wider text-white uppercase transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 dark:bg-gray-950/50 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-gray-100 uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaCode className="text-lg" />
@@ -60,7 +62,7 @@ export default function Project({
           <ul className="mt-4 flex flex-wrap gap-2 sm:mt-auto">
             {tags.map((tag, index) => (
               <li
-                className="rounded-full bg-slate-700 px-3 py-1 text-[0.7rem] tracking-wider text-white uppercase dark:bg-gray-900 dark:text-white/75"
+                className="rounded-full bg-slate-500 px-3 py-1 text-[0.75rem] tracking-wider text-gray-100 uppercase shadow-md select-none dark:bg-gray-800 dark:text-gray-100"
                 key={index}
               >
                 {tag}
@@ -74,13 +76,13 @@ export default function Project({
           target="_blank"
           rel="noopener noreferrer"
           title="View project"
-          className="absolute top-8 -right-36 hidden h-full w-[28.5rem] transition group-even:right-[initial] group-even:-left-36 group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:scale-[1.04] group-hover:-rotate-2 group-even:group-hover:translate-x-3 group-even:group-hover:translate-y-3 group-even:group-hover:rotate-2 sm:block"
+          className="pointer-events-none absolute inset-0 sm:pointer-events-auto sm:inset-[initial] sm:top-8 sm:-right-36 sm:h-full sm:w-[28.5rem] sm:transition sm:group-even:right-[initial] sm:group-even:-left-36 sm:group-hover:-translate-x-3 sm:group-hover:translate-y-3 sm:group-hover:scale-[1.04] sm:group-hover:-rotate-2 sm:group-even:group-hover:translate-x-3 sm:group-even:group-hover:translate-y-3 sm:group-even:group-hover:rotate-2"
         >
           <Image
             src={imageUrl}
-            alt="Project I worked on"
+            alt={`Screenshot of ${title}`}
             fill
-            className="rounded-t-lg object-cover object-top shadow-2xl"
+            className="-z-10 rounded-t-lg object-cover object-top opacity-30 shadow-2xl sm:opacity-100"
           />
         </a>
       </section>

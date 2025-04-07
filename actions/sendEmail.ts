@@ -29,7 +29,7 @@ export const sendEmail = async (formData: FormData) => {
     })
 
     if (!response.ok) {
-      throw new Error('Failed to send email')
+      throw new Error('Failed to send email, please try again later.')
     }
   } catch (error: unknown) {
     throw new Error(getErrorMessage(error))

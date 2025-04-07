@@ -65,7 +65,7 @@ export default function Intro() {
       </motion.h1>
 
       <motion.div
-        className="flex flex-col items-center justify-center gap-4 px-4 text-lg font-medium sm:flex-row"
+        className="flex flex-col items-center justify-center gap-5 text-lg font-medium sm:flex-row"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -74,7 +74,7 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group flex items-center gap-1 rounded-full bg-slate-600 px-7 py-3 text-white transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
+          className="group flex h-12 items-center gap-1 rounded-full bg-slate-600 px-6 text-white transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
           onClick={() => {
             setActiveSection('#contact')
             setTimeOfLastClick(Date.now())
@@ -84,31 +84,33 @@ export default function Intro() {
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />
         </Link>
         <a
-          className="borderBlack group flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 transition outline-none hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
+          className="borderBlack group flex h-12 cursor-pointer items-center gap-2 rounded-full bg-white px-6 transition outline-none hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
           href="/Attila_Huszar_CV.pdf"
           download
         >
           Download CV
           <FaFileArrowDown className="opacity-60 transition group-hover:translate-y-1" />
         </a>
-        <a
-          className="borderBlack cursor-pointer rounded-full bg-white p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/attilahuszar/"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="LinkedIn"
-        >
-          <FaLinkedinIn />
-        </a>
-        <a
-          className="borderBlack cursor-pointer rounded-full bg-white p-3 text-[1.65rem] text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60"
-          href="https://github.com/attila-huszar/"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="GitHub"
-        >
-          <FaGithub />
-        </a>
+        <div className="flex gap-5">
+          <a
+            className="borderBlack flex size-12 cursor-pointer items-center justify-center rounded-full bg-white text-xl text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60 hover:dark:text-white/80"
+            href="https://www.linkedin.com/in/attilahuszar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            className="borderBlack flex size-12 cursor-pointer items-center justify-center rounded-full bg-white text-2xl text-gray-700 transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] active:scale-105 dark:bg-white/10 dark:text-white/60 hover:dark:text-white/80"
+            href="https://github.com/attila-huszar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+          >
+            <FaGithub />
+          </a>
+        </div>
       </motion.div>
     </section>
   )
