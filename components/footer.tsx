@@ -2,7 +2,7 @@ import { RiCopyleftFill } from 'react-icons/ri'
 
 export default function Footer() {
   return (
-    <footer className="m-auto mb-4 max-w-[53rem] px-18 text-xs text-gray-500">
+    <footer className="m-auto mb-4 max-w-[53rem] px-18 text-xs text-gray-400">
       <div className="mb-2 flex items-center justify-center gap-1">
         <p>Attila Huszár</p>
         <RiCopyleftFill />

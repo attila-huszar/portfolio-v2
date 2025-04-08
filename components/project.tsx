@@ -30,7 +30,7 @@ export default function Project({
       }}
       className="group mb-3 last:mb-0 sm:mb-8"
     >
-      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-400/10 transition hover:bg-gray-400/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8 dark:bg-white/10 dark:text-gray-100 dark:hover:bg-white/20">
+      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-400/10 text-gray-900 transition hover:bg-gray-400/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8 dark:bg-white/15 dark:text-gray-100 dark:hover:bg-white/20">
         <div className="flex h-full flex-col px-5 pt-4 pb-7 sm:max-w-[50%] sm:pt-10 sm:pr-2 sm:pl-10 sm:group-even:ml-72">
           <h3 className="text-2xl font-semibold select-none text-shadow-md sm:text-shadow-[initial]">
             {title}
@@ -39,7 +39,7 @@ export default function Project({
             {siteUrl && (
               <a href={siteUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-gray-100 uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-white uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 dark:text-gray-100 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaChrome className="text-lg" />
@@ -50,7 +50,7 @@ export default function Project({
             {codeUrl && (
               <a href={codeUrl} target="_blank" rel="noopener noreferrer">
                 <button
-                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-gray-100 uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 hover:dark:bg-gray-950"
+                  className="flex w-24 cursor-pointer items-center justify-center gap-2 rounded-full bg-slate-700 py-2 text-sm tracking-wider text-white uppercase shadow-md transition outline-none hover:scale-110 hover:bg-slate-800 focus:scale-110 dark:bg-gray-900 dark:text-gray-100 hover:dark:bg-gray-950"
                   type="button"
                 >
                   <FaCode className="text-lg" />
@@ -62,7 +62,7 @@ export default function Project({
           <ul className="mt-4 flex flex-wrap gap-2 sm:mt-auto">
             {tags.map((tag, index) => (
               <li
-                className="rounded-full bg-slate-500 px-3 py-1 text-[0.75rem] tracking-wider text-gray-100 uppercase shadow-md select-none dark:bg-gray-800 dark:text-gray-100"
+                className="rounded-full bg-slate-500 px-3 py-1 text-[0.75rem] tracking-wider text-white uppercase shadow-md select-none dark:bg-gray-800 dark:text-gray-100"
                 key={index}
               >
                 {tag}
