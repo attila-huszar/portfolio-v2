@@ -85,8 +85,9 @@ export default function Intro() {
         </Link>
         <a
           className="borderBlack group flex h-12 cursor-pointer items-center gap-2 rounded-full bg-white px-6 transition outline-none hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
-          href="/Attila_Huszar_CV.pdf"
-          download
+          href={process.env.NEXT_PUBLIC_CV_URL}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Download CV
           <FaFileArrowDown className="opacity-60 transition group-hover:translate-y-1" />
