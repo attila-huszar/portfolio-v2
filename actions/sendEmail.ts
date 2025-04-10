@@ -24,7 +24,7 @@ export const sendEmail = async (formData: FormData) => {
         to: 'attila.huszar@outlook.com',
         reply_to: String(senderEmail),
         subject: 'Message from portfolio contact form',
-        html: `<p>Email: ${String(senderEmail)}</p><p>Message: ${message}</p>`,
+        html: `<p>From: ${String(senderEmail)}</p><p>Message: ${message}</p>`,
       }),
     })
 
