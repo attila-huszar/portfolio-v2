@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: 'Attila Huszár | Web Dev',
   description:
     'Developer based in Budapest, passionate about building web applications, learning new technologies, traveling and exploring new places.',
+  verification: {
+    google: 'XijBpG52cCq4ocnOWZwDxRuDQLqCA28f93Fe67Z-j9Y',
+  },
 }
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
