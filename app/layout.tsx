@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ThemeContextProvider from '@/context/theme-context'
@@ -24,19 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TNBJK66X1P"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TNBJK66X1P');`}
-        </Script>
-      </head>
+    <html lang="en">
       <body
         className={`${inter.className} dark:text-opacity-90 relative bg-stone-50 pt-32 text-gray-950 dark:bg-gray-900 dark:text-gray-50`}
       >
@@ -52,6 +40,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
+      <GoogleAnalytics gaId="G-TNBJK66X1P" />
     </html>
   )
 }
