@@ -3,7 +3,7 @@
 import SectionHeading from './section-heading'
 import { motion } from 'motion/react'
 import { useSectionInView } from '@/hooks/useSectionInView'
-import Markdown from 'markdown-to-jsx'
+import Markdown from 'react-markdown'
 import info from '@/assets/info.json'
 
 export default function About() {
@@ -19,9 +19,15 @@ export default function About() {
       transition={{ delay: 0.175 }}
     >
       <SectionHeading>About me</SectionHeading>
-      <Markdown className="text-lg" options={{ wrapper: 'p' }}>
-        {info.about}
-      </Markdown>
+      <div className="prose text-lg">
+        <Markdown
+          components={{
+            p: ({ ...props }) => <p className="mb-6" {...props} />,
+          }}
+        >
+          {info.about}
+        </Markdown>
+      </div>
     </motion.section>
   )
 }

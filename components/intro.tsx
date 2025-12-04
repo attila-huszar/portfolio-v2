@@ -7,7 +7,7 @@ import { BsChevronCompactRight } from 'react-icons/bs'
 import { FaFileArrowDown, FaGithub, FaLinkedinIn } from 'react-icons/fa6'
 import { useSectionInView } from '@/hooks/useSectionInView'
 import { useActiveSectionContext } from '@/context/active-section-context'
-import Markdown from 'markdown-to-jsx'
+import Markdown from 'react-markdown'
 import info from '@/assets/info.json'
 
 const CV_URL = process.env.NEXT_PUBLIC_CV_URL ?? ''
@@ -59,7 +59,7 @@ export default function Intro() {
       </div>
 
       <motion.h1
-        className="my-10 px-4 text-2xl !leading-normal font-medium text-balance sm:text-4xl"
+        className="my-10 px-4 text-2xl leading-normal sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
