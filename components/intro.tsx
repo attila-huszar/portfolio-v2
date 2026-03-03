@@ -59,11 +59,22 @@ export default function Intro() {
       </div>
 
       <motion.h1
-        className="my-10 px-4 text-2xl leading-normal sm:text-4xl"
+        className="my-10 flex-col px-4 text-2xl leading-normal font-light sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Markdown>{info.intro}</Markdown>
+        <Markdown
+          components={{
+            strong: (props) => (
+              <strong
+                className="bg-gradient-to-r from-slate-700 to-slate-800 bg-clip-text font-semibold text-transparent dark:from-slate-300 dark:to-slate-200"
+                {...props}
+              />
+            ),
+          }}
+        >
+          {info.intro}
+        </Markdown>
       </motion.h1>
 
       <motion.div
