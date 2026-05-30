@@ -6,6 +6,11 @@ import prettier from 'eslint-config-prettier/flat'
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    settings: {
+      react: { version: '19' },
+    },
+  },
   prettier,
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ])
