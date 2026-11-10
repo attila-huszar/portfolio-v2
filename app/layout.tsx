@@ -1,16 +1,14 @@
-import { FC, PropsWithChildren } from 'react'
-import { Metadata } from 'next'
+import type { FC, PropsWithChildren } from 'react'
+import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import { Toaster } from 'react-hot-toast'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ThemeSwitch from '@/components/theme-switch'
 import ActiveSectionContextProvider from '@/context/active-section-context'
 import './globals.css'
-
-export const runtime = 'edge'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,8 +38,14 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeProvider>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-TNBJK66X1P" />
+        <Script id="google-analytics">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-TNBJK66X1P');
+        `}</Script>
       </body>
-      <GoogleAnalytics gaId="G-TNBJK66X1P" />
     </html>
   )
 }

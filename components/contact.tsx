@@ -7,7 +7,7 @@ import { sendEmail } from '@/actions/sendEmail'
 import SectionHeading from './section-heading'
 import SubmitBtn from './submit-btn'
 
-export default function Contact() {
+export default function Contact({ email }: { email: string }) {
   const { ref } = useSectionInView('#contact')
 
   return (
@@ -31,11 +31,17 @@ export default function Contact() {
       <SectionHeading>Contact me</SectionHeading>
 
       <p className="-mt-6 text-gray-700 dark:text-white/80">
-        {'Please contact me directly at '}
-        <a className="underline" href="mailto:attila.huszar@outlook.com">
-          attila.huszar@outlook.com
-        </a>
-        {' or through this form.'}
+        {email ? (
+          <>
+            {'Please contact me directly at '}
+            <a className="underline" href={`mailto:${email}`}>
+              {email}
+            </a>
+            {' or through this form.'}
+          </>
+        ) : (
+          'Please contact me through this form.'
+        )}
       </p>
 
       <form
@@ -55,7 +61,7 @@ export default function Contact() {
         }}
       >
         <input
-          className="borderBlack h-14 rounded-lg px-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white/100"
+          className="borderBlack h-14 rounded-lg px-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white"
           name="senderEmail"
           type="email"
           required
@@ -63,7 +69,7 @@ export default function Contact() {
           placeholder="Your email"
         />
         <textarea
-          className="borderBlack my-3 h-52 rounded-lg p-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white/100"
+          className="borderBlack my-3 h-52 rounded-lg p-4 transition-all dark:bg-white/80 dark:outline-none dark:focus:bg-white"
           name="message"
           placeholder="Your message"
           required

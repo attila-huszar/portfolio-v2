@@ -1,18 +1,27 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
-import nextVitals from 'eslint-config-next/core-web-vitals'
-import nextTs from 'eslint-config-next/typescript'
+import js from '@eslint/js'
+import globals from 'globals'
+import ts from 'typescript-eslint'
+import reactHooks from 'eslint-plugin-react-hooks'
 import prettier from 'eslint-config-prettier/flat'
 
 const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
+  js.configs.recommended,
+  ...ts.configs.recommended,
+  reactHooks.configs.flat.recommended,
   {
-    settings: {
-      react: { version: '19' },
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
     },
   },
   prettier,
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  globalIgnores([
+    'dist/**',
+    '.cloudflare/**',
+    '.vinext/**',
+    '.next/**',
+    'next-env.d.ts',
+  ]),
 ])
 
 export default eslintConfig

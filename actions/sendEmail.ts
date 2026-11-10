@@ -1,5 +1,7 @@
 'use server'
 
+import { env } from 'cloudflare:workers'
+
 export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
@@ -13,15 +15,19 @@ export const sendEmail = async (formData: FormData) => {
   }
 
   try {
+    if (!env.CONTACT_EMAIL) {
+      throw new Error('Contact recipient is not configured.')
+    }
+
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         from: 'Contact Form <onboarding@resend.dev>',
-        to: 'attila.huszar@outlook.com',
+        to: env.CONTACT_EMAIL,
         reply_to: String(senderEmail),
         subject: 'Message from portfolio contact form',
         html: `<p>From: ${String(senderEmail)}</p><p>Message: ${message}</p>`,
@@ -32,7 +38,7 @@ export const sendEmail = async (formData: FormData) => {
       throw new Error('Failed to send email, please try again later.')
     }
   } catch (error: unknown) {
-    throw new Error(getErrorMessage(error))
+    throw new Error(getErrorMessage(error), { cause: error })
   }
 }
 

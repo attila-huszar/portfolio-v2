@@ -10,8 +10,6 @@ import { useActiveSectionContext } from '@/context/active-section-context'
 import Markdown from 'react-markdown'
 import info from '@/assets/info.json'
 
-const CV_URL = process.env.NEXT_PUBLIC_CV_URL ?? ''
-
 export default function Intro() {
   const { ref } = useSectionInView('#home', 0.5)
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
@@ -98,7 +96,7 @@ export default function Intro() {
         </Link>
         <a
           className="borderBlack group flex h-12 cursor-pointer items-center gap-2 rounded-full bg-white px-6 transition outline-none hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
-          href={CV_URL}
+          href={info.cvUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
