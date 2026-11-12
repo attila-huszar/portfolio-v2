@@ -1,13 +1,12 @@
-import type { FC, PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
-import { ThemeProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
 import { Toaster } from 'react-hot-toast'
+import Analytics from '@/components/analytics'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ThemeSwitch from '@/components/theme-switch'
-import ActiveSectionContextProvider from '@/context/active-section-context'
+import Providers from './providers'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,33 +20,23 @@ export const metadata: Metadata = {
   },
 }
 
-const Layout: FC<PropsWithChildren> = ({ children }) => {
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} dark:text-opacity-90 relative bg-stone-50 pt-32 text-gray-950 dark:bg-gray-900 dark:text-gray-50`}
       >
-        <div className="absolute -top-24 right-44 -z-10 size-[31.25rem] rounded-full bg-[#fbe2e3] blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-        <div className="absolute -top-4 left-[-35rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:-left-60 2xl:-left-20 dark:bg-[#676394]"></div>
-        <ThemeProvider attribute="class">
-          <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Footer />
-            <Toaster position="top-right" />
-            <ThemeSwitch />
-          </ActiveSectionContextProvider>
-        </ThemeProvider>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-TNBJK66X1P" />
-        <Script id="google-analytics">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-TNBJK66X1P');
-        `}</Script>
+        <div className="absolute -top-24 right-44 -z-10 size-125 rounded-full bg-[#fbe2e3] blur-[10rem] sm:w-275 dark:bg-[#946263]"></div>
+        <div className="absolute -top-4 -left-140 -z-10 h-125 w-200 rounded-full bg-[#dbd7fb] blur-[10rem] sm:w-275 md:-left-132 lg:-left-112 xl:-left-60 2xl:-left-20 dark:bg-[#676394]"></div>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+          <ThemeSwitch />
+        </Providers>
+        <Analytics />
       </body>
     </html>
   )
 }
-
-export default Layout

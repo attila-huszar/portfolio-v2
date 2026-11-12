@@ -6,6 +6,4 @@ export type SectionHash = (typeof links)[number]['hash']
 export type ActiveSection = {
   activeSection: SectionHash
   setActiveSection: React.Dispatch<React.SetStateAction<SectionHash>>
-  timeOfLastClick: number
-  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>
 }

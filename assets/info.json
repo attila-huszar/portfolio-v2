@@ -1,7 +1,7 @@
 {
-  "cvUrl": "https://s3.eu-central-1.amazonaws.com/attila.huszar/portfolio/Attila_Huszar_CV.pdf",
   "intro": "Hi! I'm **Attila**, a **full stack developer** focused on **performance**, **usability**, and **clean UI**, working primarily with **React** and **Node.js**.",
   "about": "After graduating with a degree in socio-economics and living some years abroad, I made the decision to follow my passion for programming and started working as a frontend developer at NIX Tech Budapest. My main stack became **JavaScript**, **TypeScript** and **React**. Additionally, I've gained knowledge with **Node.js**, **Express**, **SQL**, and **Docker**.\n\nWhat I find most enjoyable about programming is the problem-solving aspect, there's a sense of satisfaction when I figure out a solution to a challenging problem. It's such a rewarding journey to keep learning and exploring new technologies.\n\nWhen I'm not coding, I like playing video and board games, or taking trips, whether it's cycling in nature or venturing further to explore new places.",
+  "cvUrl": "https://s3.eu-central-1.amazonaws.com/attila.huszar/portfolio/Attila_Huszar_CV.pdf",
   "projects": [
     {
       "title": "Bookshop Frontend",
@@ -23,7 +23,7 @@
       "title": "Portfolio v2",
       "description": "Portfolio site built with Next.js and Tailwind CSS.",
       "tags": ["Next.js", "TypeScript", "Tailwind"],
-      "siteUrl": "https://attila.overclocked.workers.dev/",
+      "siteUrl": "https://attila.huszar.workers.dev/",
       "codeUrl": "https://github.com/attila-huszar/portfolio-v2/",
       "imageUrl": "/images/portfolio-v2.webp"
     },

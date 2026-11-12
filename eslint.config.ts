@@ -5,7 +5,7 @@ import ts from 'typescript-eslint'
 import reactHooks from 'eslint-plugin-react-hooks'
 import prettier from 'eslint-config-prettier/flat'
 
-const eslintConfig = defineConfig([
+export default defineConfig([
   js.configs.recommended,
   ...ts.configs.recommended,
   reactHooks.configs.flat.recommended,
@@ -23,5 +23,3 @@ const eslintConfig = defineConfig([
     'next-env.d.ts',
   ]),
 ])
-
-export default eslintConfig

@@ -1,19 +1,20 @@
+'use client'
+
 import { useActiveSectionContext } from '@/context/active-section-context'
-import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { useOnInView } from 'react-intersection-observer'
 import type { SectionHash } from '@/types/Section'
 
-export function useSectionInView(sectionHash: SectionHash, threshold = 0.75) {
-  const { ref, inView } = useInView({
-    threshold,
-  })
-  const { setActiveSection, timeOfLastClick } = useActiveSectionContext()
+export function useSectionInView(sectionHash: SectionHash, threshold = 0.5) {
+  const { setActiveSection } = useActiveSectionContext()
 
-  useEffect(() => {
-    if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection(sectionHash)
-    }
-  }, [inView, setActiveSection, timeOfLastClick, sectionHash])
+  const ref = useOnInView(
+    (inView) => {
+      if (inView) {
+        setActiveSection(sectionHash)
+      }
+    },
+    { threshold },
+  )
 
   return {
     ref,
