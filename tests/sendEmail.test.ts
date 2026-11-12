@@ -99,10 +99,10 @@ test('network failure returns a public error rather than throwing', async () => 
   assert.doesNotMatch(result.error, /Private connection details/)
 })
 
-test('successful delivery uses the runtime recipient and preserves message text', async () => {
-  const result = await sendEmail(
-    contactForm('sender@example.com', '<b>Hello!</b>'),
-  )
+test('successful delivery uses the runtime recipient and safely formats the content', async () => {
+  const senderEmail = "o'connor&team@example.com"
+  const message = '<b>Hello!</b>\r\nSecond & "third" \'fourth\'\rLast\nLine'
+  const result = await sendEmail(contactForm(senderEmail, message))
   assert.deepEqual(result, { ok: true })
   assert.equal(fetchMock.mock.callCount(), 1)
   const [url, options] = fetchMock.mock.calls[0].arguments
@@ -116,7 +116,14 @@ test('successful delivery uses the runtime recipient and preserves message text'
   assert.ok(typeof options.body === 'string')
   const body = JSON.parse(options.body)
   assert.equal(body.to, 'recipient@example.com')
-  assert.equal(body.reply_to, 'sender@example.com')
-  assert.match(body.text, /<b>Hello!<\/b>/)
-  assert.equal(body.html, undefined)
+  assert.equal(body.reply_to, senderEmail)
+  assert.equal(body.subject, `Portfolio message from ${senderEmail}`)
+  assert.equal(body.text, `From: ${senderEmail}\n\nMessage: ${message}`)
+  assert.ok(body.html.includes('href="mailto:o&#39;connor%26team@example.com"'))
+  assert.ok(body.html.includes('>o&#39;connor&amp;team@example.com</a>'))
+  assert.ok(
+    body.html.includes(
+      '&lt;b&gt;Hello!&lt;/b&gt;<br />Second &amp; &quot;third&quot; &#39;fourth&#39;<br />Last<br />Line',
+    ),
+  )
 })

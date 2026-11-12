@@ -1,12 +1,15 @@
 'use server'
 
 import { env } from 'cloudflare:workers'
+import { createContactEmail } from '../emails/contact.ts'
 
 type SendEmailResult = { ok: true } | { ok: false; error: string }
 
 const deliveryError = 'Failed to send email, please try again later.'
 
-export const sendEmail = async (formData: FormData): Promise<SendEmailResult> => {
+export const sendEmail = async (
+  formData: FormData,
+): Promise<SendEmailResult> => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
 
@@ -40,13 +43,15 @@ export const sendEmail = async (formData: FormData): Promise<SendEmailResult> =>
         from: 'Contact Form <onboarding@resend.dev>',
         to: env.CONTACT_EMAIL,
         reply_to: senderEmail,
-        subject: 'Message from portfolio contact form',
-        text: `From: ${senderEmail}\n\nMessage: ${message}`,
+        ...createContactEmail(senderEmail, message),
       }),
     })
 
     if (!response.ok) {
-      console.error({ event: 'contact_email_rejected', status: response.status })
+      console.error({
+        event: 'contact_email_rejected',
+        status: response.status,
+      })
       return { ok: false, error: deliveryError }
     }
     return { ok: true }
