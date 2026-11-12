@@ -3,20 +3,11 @@
 import Link from 'next/link'
 import { clsx } from 'clsx'
 import { motion } from 'motion/react'
-import type { MouseEvent } from 'react'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
-import { links, type SectionHash } from '@/constants/navigation'
+import { links } from '@/constants/navigation'
 
 export default function Header() {
-  const { activeSection, selectSection } = useScrollSpy(links)
-
-  function handleLinkClick(
-    event: MouseEvent<HTMLAnchorElement>,
-    hash: SectionHash,
-  ) {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-    selectSection(hash)
-  }
+  const { activeSection, handleLinkClick } = useScrollSpy(links)
 
   return (
     <header className="relative z-999">

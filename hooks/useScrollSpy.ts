@@ -1,91 +1,137 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { MouseEvent } from 'react'
 import type { SectionHash } from '@/constants/navigation'
 
 export function useScrollSpy(sections: readonly { hash: SectionHash }[]) {
   const [activeSection, setActiveSection] = useState(sections[0]?.hash)
-  const navigationTarget = useRef<SectionHash | undefined>(undefined)
+  const isScrollingToSection = useRef(false)
 
-  const selectSection = useCallback(
-    (hash: SectionHash) => {
-      if (hash !== activeSection) navigationTarget.current = hash
-      setActiveSection(hash)
-    },
-    [activeSection],
-  )
+  function handleLinkClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    hash: SectionHash,
+  ) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
 
-  useEffect(() => {
-    const targets = sections.flatMap(({ hash }) => {
-      const element = document.getElementById(hash.slice(1))
-      return element ? [{ hash, element }] : []
-    })
-    const footer = document.querySelector('footer')
-    const ratios = new Map<Element, number>()
-    let footerVisible = false
-    let observer: IntersectionObserver
+    // Keep the clicked section active while scrolling past other sections.
+    if (hash !== activeSection) isScrollingToSection.current = true
 
-    function update() {
-      if (navigationTarget.current) return
-      const visible = targets
-        .map(({ hash, element }) => ({
-          hash,
-          ratio: ratios.get(element) ?? 0,
-        }))
-        .filter(({ ratio }) => ratio > 0)
-      const next = footerVisible
-        ? visible.at(-1)
-        : visible.reduce(
-            (best, section) => (section.ratio > best.ratio ? section : best),
-            visible[0],
-          )
-      if (next) setActiveSection(next.hash)
+    setActiveSection(hash)
+
+    if (hash !== '#home' && hash !== '#contact') return
+
+    event.preventDefault()
+
+    if (window.location.hash !== hash) {
+      window.history.pushState(window.history.state, '', hash)
     }
 
-    function observe() {
+    window.scrollTo({
+      top: hash === '#home' ? 0 : document.documentElement.scrollHeight,
+    })
+  }
+
+  useEffect(() => {
+    const observedSections = sections.flatMap(({ hash }) => {
+      const element = document.getElementById(hash.slice(1))
+
+      return element ? [{ hash, element }] : []
+    })
+
+    const footer = document.querySelector('footer')
+    const visibilityRatios = new Map<Element, number>()
+
+    let isFooterVisible = false
+    let observer: IntersectionObserver
+
+    function updateActiveSection() {
+      if (isScrollingToSection.current) return
+
+      let nextSection: SectionHash | undefined
+      let highestVisibilityRatio = 0
+
+      for (const { hash, element } of observedSections) {
+        const visibilityRatio = visibilityRatios.get(element) ?? 0
+
+        if (visibilityRatio <= 0) continue
+
+        // Near the footer, prefer the last visible section.
+        if (isFooterVisible || visibilityRatio > highestVisibilityRatio) {
+          nextSection = hash
+          highestVisibilityRatio = visibilityRatio
+        }
+      }
+
+      if (nextSection) setActiveSection(nextSection)
+    }
+
+    function observeSections() {
+      const scrollOffset = getComputedStyle(
+        document.documentElement,
+      ).scrollPaddingTop
+      const rootMargin = `-${scrollOffset} 0px 0px 0px`
+
+      if (observer?.rootMargin === rootMargin) return
+
       observer?.disconnect()
-      ratios.clear()
-      footerVisible = false
-      navigationTarget.current = undefined
-      const offset = getComputedStyle(document.documentElement).scrollPaddingTop
+
+      visibilityRatios.clear()
+      isFooterVisible = false
+      isScrollingToSection.current = false
+
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (entry.target === footer) footerVisible = entry.isIntersecting
-            else ratios.set(entry.target, entry.intersectionRatio)
+            if (entry.target === footer) {
+              isFooterVisible = entry.isIntersecting
+            } else {
+              visibilityRatios.set(entry.target, entry.intersectionRatio)
+            }
           }
-          update()
+
+          updateActiveSection()
         },
         {
-          rootMargin: `-${offset} 0px 0px 0px`,
+          rootMargin,
           // Reconsider the active section at each 10% visibility change.
           threshold: Array.from({ length: 11 }, (_, index) => index / 10),
         },
       )
-      targets.forEach(({ element }) => observer.observe(element))
+
+      observedSections.forEach(({ element }) => observer.observe(element))
       if (footer) observer.observe(footer)
     }
 
-    function resumeTracking() {
-      navigationTarget.current = undefined
-      update()
+    function resumeScrollTracking(event: Event) {
+      if (!isScrollingToSection.current) return
+
+      isScrollingToSection.current = false
+
+      // scrollend can precede the observer's final visibility update.
+      if (event.type !== 'scrollend') updateActiveSection()
     }
 
-    observe()
-    document.addEventListener('scrollend', resumeTracking)
-    window.addEventListener('wheel', resumeTracking, { passive: true })
-    window.addEventListener('touchstart', resumeTracking, { passive: true })
-    window.addEventListener('keydown', resumeTracking)
-    window.addEventListener('resize', observe)
+    observeSections()
+
+    const listenerController = new AbortController()
+    const { signal } = listenerController
+
+    document.addEventListener('scrollend', resumeScrollTracking, { signal })
+    window.addEventListener('resize', observeSections, { signal })
+
+    for (const event of ['wheel', 'touchstart', 'keydown']) {
+      window.addEventListener(event, resumeScrollTracking, {
+        passive: true,
+        signal,
+      })
+    }
+
     return () => {
       observer.disconnect()
-      document.removeEventListener('scrollend', resumeTracking)
-      window.removeEventListener('wheel', resumeTracking)
-      window.removeEventListener('touchstart', resumeTracking)
-      window.removeEventListener('keydown', resumeTracking)
-      window.removeEventListener('resize', observe)
+      listenerController.abort()
     }
   }, [sections])
 
-  return { activeSection, selectSection }
+  return { activeSection, handleLinkClick }
 }

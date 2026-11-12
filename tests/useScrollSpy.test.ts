@@ -14,8 +14,7 @@ const jiti = createJiti(import.meta.url, {
           active = value
         },
       ],
-      useRef: () => ({ current: undefined }),
-      useCallback: (callback: unknown) => callback,
+      useRef: (initial: unknown) => ({ current: initial }),
       useEffect: (effect: typeof setup) => {
         setup = effect
       },
@@ -37,6 +36,8 @@ const cases: {
   ratios: Partial<Record<SectionHash, number>>
   expected: SectionHash
   footer?: boolean
+  click?: SectionHash
+  interrupt?: boolean
 }[] = [
   {
     name: 'tall Projects can activate with a low visibility ratio',
@@ -53,6 +54,19 @@ const cases: {
     ratios: { '#skills': 1, '#contact': 0.9 },
     expected: '#contact',
     footer: true,
+  },
+  {
+    name: 'finishing navigation does not restore stale observer visibility',
+    ratios: { '#projects': 0.8 },
+    expected: '#skills',
+    click: '#skills',
+  },
+  {
+    name: 'user input resumes tracking even when visibility ratios stay unchanged',
+    ratios: { '#projects': 0.8 },
+    expected: '#projects',
+    click: '#skills',
+    interrupt: true,
   },
 ]
 
@@ -88,7 +102,7 @@ for (const scenario of cases) {
         Object.defineProperty(globalThis, name, { configurable: true, value })
       }
       active = undefined
-      useScrollSpy(links)
+      const { handleLinkClick } = useScrollSpy(links)
       cleanup = setup()
       notify([
         ...elements.map((target, index) => ({
@@ -102,6 +116,19 @@ for (const scenario of cases) {
           isIntersecting: Boolean(scenario.footer),
         },
       ])
+      if (scenario.click) {
+        handleLinkClick(
+          {
+            metaKey: false,
+            ctrlKey: false,
+            shiftKey: false,
+            altKey: false,
+          } as Parameters<typeof handleLinkClick>[0],
+          scenario.click,
+        )
+        if (scenario.interrupt) globals.window.dispatchEvent(new Event('wheel'))
+        else globals.document.dispatchEvent(new Event('scrollend'))
+      }
       assert.equal(active, scenario.expected)
     } finally {
       cleanup?.()
