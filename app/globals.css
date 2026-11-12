@@ -12,6 +12,8 @@
 
 html {
   --line-color: #e5e7eb;
+  --section-scroll-offset: 7rem;
+  scroll-padding-top: var(--section-scroll-offset);
 }
 
 @media (prefers-reduced-motion: no-preference) {

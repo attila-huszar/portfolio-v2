@@ -3,33 +3,20 @@
 import Link from 'next/link'
 import { clsx } from 'clsx'
 import { motion } from 'motion/react'
-import { useActiveSectionContext } from '@/context/active-section-context'
-
-export const links = [
-  {
-    name: 'Home',
-    hash: '#home',
-  },
-  {
-    name: 'About',
-    hash: '#about',
-  },
-  {
-    name: 'Projects',
-    hash: '#projects',
-  },
-  {
-    name: 'Skills',
-    hash: '#skills',
-  },
-  {
-    name: 'Contact',
-    hash: '#contact',
-  },
-] as const
+import type { MouseEvent } from 'react'
+import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { links, type SectionHash } from '@/constants/navigation'
 
 export default function Header() {
-  const { activeSection, setActiveSection } = useActiveSectionContext()
+  const { activeSection, selectSection } = useScrollSpy(links)
+
+  function handleLinkClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    hash: SectionHash,
+  ) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    selectSection(hash)
+  }
 
   return (
     <header className="relative z-999">
@@ -39,7 +26,10 @@ export default function Header() {
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       ></motion.div>
 
-      <nav className="fixed top-[0.15rem] left-1/2 flex h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
+      <motion.nav
+        layoutRoot
+        className="fixed top-[0.15rem] left-1/2 flex h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0"
+      >
         <ul className="flex w-88 flex-wrap items-center justify-center gap-y-1 font-medium text-gray-600 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
             <motion.li
@@ -57,7 +47,10 @@ export default function Header() {
                   },
                 )}
                 href={link.hash}
-                onClick={() => setActiveSection(link.hash)}
+                onClick={(event) => handleLinkClick(event, link.hash)}
+                aria-current={
+                  activeSection === link.hash ? 'location' : undefined
+                }
               >
                 {link.name}
 
@@ -76,7 +69,7 @@ export default function Header() {
             </motion.li>
           ))}
         </ul>
-      </nav>
+      </motion.nav>
     </header>
   )
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import info from '@/assets/info.json'
-import { useSectionInView } from '@/hooks/useSectionInView'
 import { motion } from 'motion/react'
 import SectionHeading from './section-heading'
 
@@ -20,14 +19,8 @@ const fadeInAnimationVariants = {
 }
 
 export default function Skills() {
-  const { ref } = useSectionInView('#skills', 0.3)
-
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className="mb-28 max-w-212 scroll-mt-28 text-center sm:mb-40"
-    >
+    <section id="skills" className="mb-28 max-w-212 text-center sm:mb-40">
       <SectionHeading>My skills</SectionHeading>
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
         {info.skills.map((skill, index) => (

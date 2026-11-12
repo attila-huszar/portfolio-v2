@@ -5,21 +5,12 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { BsChevronCompactRight } from 'react-icons/bs'
 import { FaFileArrowDown, FaGithub, FaLinkedinIn } from 'react-icons/fa6'
-import { useSectionInView } from '@/hooks/useSectionInView'
-import { useActiveSectionContext } from '@/context/active-section-context'
 import Markdown from 'react-markdown'
 import info from '@/assets/info.json'
 
 export default function Intro() {
-  const { ref } = useSectionInView('#home', 0.5)
-  const { setActiveSection } = useActiveSectionContext()
-
   return (
-    <section
-      id="home"
-      ref={ref}
-      className="mb-28 max-w-200 scroll-mt-[100rem] text-center sm:mb-0"
-    >
+    <section id="home" className="mb-28 max-w-200 text-center sm:mb-0">
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -86,7 +77,6 @@ export default function Intro() {
         <Link
           href="#contact"
           className="group flex h-12 items-center gap-1 rounded-full bg-slate-600 px-6 text-white transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
-          onClick={() => setActiveSection('#contact')}
         >
           Contact me here
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />

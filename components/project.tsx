@@ -4,7 +4,9 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { FaChrome, FaCode } from 'react-icons/fa6'
-import { type ProjectProps } from '@/types/ProjectProps'
+import type info from '@/assets/info.json'
+
+type ProjectProps = (typeof info.projects)[number]
 
 export default function Project({
   title,

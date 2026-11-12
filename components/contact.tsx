@@ -2,14 +2,11 @@
 
 import { motion } from 'motion/react'
 import { toast } from 'react-hot-toast'
-import { useSectionInView } from '@/hooks/useSectionInView'
 import { sendEmail } from '@/actions/sendEmail'
 import SectionHeading from './section-heading'
 import SubmitBtn from './submit-btn'
 
 export default function Contact({ email }: { email: string }) {
-  const { ref } = useSectionInView('#contact')
-
   async function handleSubmit(formData: FormData) {
     try {
       const result = await sendEmail(formData)
@@ -26,7 +23,6 @@ export default function Contact({ email }: { email: string }) {
   return (
     <motion.section
       id="contact"
-      ref={ref}
       className="mb-20 w-[min(100%,38rem)] text-center sm:mb-28"
       initial={{
         opacity: 0,
