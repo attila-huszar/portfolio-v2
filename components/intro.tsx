@@ -12,13 +12,13 @@ import info from '@/assets/info.json'
 
 export default function Intro() {
   const { ref } = useSectionInView('#home', 0.5)
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
+  const { setActiveSection } = useActiveSectionContext()
 
   return (
     <section
       id="home"
       ref={ref}
-      className="mb-28 max-w-[50rem] scroll-mt-[100rem] text-center sm:mb-0"
+      className="mb-28 max-w-200 scroll-mt-[100rem] text-center sm:mb-0"
     >
       <div className="flex items-center justify-center">
         <div className="relative">
@@ -35,8 +35,8 @@ export default function Intro() {
               alt="Developer portrait"
               width={128}
               height={128}
-              priority
-              className="size-32 rounded-full border-[0.25rem] border-white object-cover shadow-xl"
+              preload
+              className="size-32 rounded-full border-4 border-white object-cover shadow-xl"
             />
           </motion.div>
 
@@ -65,7 +65,7 @@ export default function Intro() {
           components={{
             strong: (props) => (
               <strong
-                className="bg-gradient-to-r from-slate-700 to-slate-800 bg-clip-text font-semibold text-transparent dark:from-slate-300 dark:to-slate-200"
+                className="bg-linear-to-r from-slate-700 to-slate-800 bg-clip-text font-semibold text-transparent dark:from-slate-300 dark:to-slate-200"
                 {...props}
               />
             ),
@@ -86,10 +86,7 @@ export default function Intro() {
         <Link
           href="#contact"
           className="group flex h-12 items-center gap-1 rounded-full bg-slate-600 px-6 text-white transition outline-none hover:scale-110 hover:bg-slate-900 focus:scale-110 active:scale-105 dark:bg-gray-950/50 hover:dark:bg-gray-950"
-          onClick={() => {
-            setActiveSection('#contact')
-            setTimeOfLastClick(Date.now())
-          }}
+          onClick={() => setActiveSection('#contact')}
         >
           Contact me here
           <BsChevronCompactRight className="opacity-70 transition group-hover:translate-x-2" />

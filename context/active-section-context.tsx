@@ -9,15 +9,12 @@ export default function ActiveSectionContextProvider({
   children,
 }: React.PropsWithChildren) {
   const [activeSection, setActiveSection] = useState<SectionHash>('#home')
-  const [timeOfLastClick, setTimeOfLastClick] = useState(0)
 
   return (
     <ActiveSectionContext.Provider
       value={{
         activeSection,
         setActiveSection,
-        timeOfLastClick,
-        setTimeOfLastClick,
       }}
     >
       {children}

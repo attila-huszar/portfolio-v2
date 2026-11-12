@@ -30,7 +30,7 @@ export default function Project({
       }}
       className="group mb-3 last:mb-0 sm:mb-8"
     >
-      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-400/10 text-gray-900 transition hover:bg-gray-400/20 sm:h-[17rem] sm:pr-8 sm:group-even:pl-8 dark:bg-white/15 dark:text-gray-100 dark:hover:bg-white/20">
+      <section className="relative max-w-2xl overflow-hidden rounded-lg border border-black/5 bg-gray-400/10 text-gray-900 transition hover:bg-gray-400/20 sm:h-68 sm:pr-8 sm:group-even:pl-8 dark:bg-white/15 dark:text-gray-100 dark:hover:bg-white/20">
         <div className="flex h-full flex-col px-5 pt-4 pb-7 sm:max-w-[50%] sm:pt-10 sm:pr-2 sm:pl-10 sm:group-even:ml-72">
           <h3 className="text-2xl font-semibold select-none text-shadow-md sm:text-shadow-[initial]">
             {title}
@@ -76,7 +76,7 @@ export default function Project({
           target="_blank"
           rel="noopener noreferrer"
           title="View project"
-          className="pointer-events-none absolute inset-0 sm:pointer-events-auto sm:inset-[initial] sm:top-8 sm:-right-36 sm:h-full sm:w-[28.5rem] sm:transition sm:group-even:right-[initial] sm:group-even:-left-36 sm:group-hover:-translate-x-3 sm:group-hover:translate-y-3 sm:group-hover:scale-[1.04] sm:group-hover:-rotate-2 sm:group-even:group-hover:translate-x-3 sm:group-even:group-hover:translate-y-3 sm:group-even:group-hover:rotate-2"
+          className="pointer-events-none absolute inset-0 sm:pointer-events-auto sm:inset-[initial] sm:top-8 sm:-right-36 sm:h-full sm:w-114 sm:transition sm:group-even:right-[initial] sm:group-even:-left-36 sm:group-hover:-translate-x-3 sm:group-hover:translate-y-3 sm:group-hover:scale-[1.04] sm:group-hover:-rotate-2 sm:group-even:group-hover:translate-x-3 sm:group-even:group-hover:translate-y-3 sm:group-even:group-hover:rotate-2"
         >
           <Image
             src={imageUrl}
