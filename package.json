@@ -5,8 +5,10 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "predeploy": "node -e \"if (!process.env.CONTACT_EMAIL?.trim()) { console.error('Set CONTACT_EMAIL in your deployment shell before running npm run deploy.'); process.exit(1) }\"",
     "deploy": "vinext-cloudflare deploy",
     "typecheck": "cf workers types && tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -36,6 +38,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
+    "jiti": "^2.7.0",
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.5",

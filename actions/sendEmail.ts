@@ -2,23 +2,36 @@
 
 import { env } from 'cloudflare:workers'
 
-export const sendEmail = async (formData: FormData) => {
+type SendEmailResult = { ok: true } | { ok: false; error: string }
+
+const deliveryError = 'Failed to send email, please try again later.'
+
+export const sendEmail = async (formData: FormData): Promise<SendEmailResult> => {
   const senderEmail = formData.get('senderEmail')
   const message = formData.get('message')
 
-  if (!/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim.test(String(senderEmail))) {
-    throw new Error('Invalid email address')
+  if (
+    typeof senderEmail !== 'string' ||
+    senderEmail.length > 500 ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(senderEmail)
+  ) {
+    return { ok: false, error: 'Invalid email address' }
   }
 
   if (!message || typeof message !== 'string' || message.length > 5000) {
-    throw new Error('Invalid message')
+    return { ok: false, error: 'Invalid message' }
+  }
+
+  if (!env.CONTACT_EMAIL?.trim() || !env.RESEND_API_KEY?.trim()) {
+    console.error({
+      event: 'contact_email_configuration_missing',
+      recipientConfigured: Boolean(env.CONTACT_EMAIL?.trim()),
+      apiKeyConfigured: Boolean(env.RESEND_API_KEY?.trim()),
+    })
+    return { ok: false, error: deliveryError }
   }
 
   try {
-    if (!env.CONTACT_EMAIL) {
-      throw new Error('Contact recipient is not configured.')
-    }
-
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -28,32 +41,19 @@ export const sendEmail = async (formData: FormData) => {
       body: JSON.stringify({
         from: 'Contact Form <onboarding@resend.dev>',
         to: env.CONTACT_EMAIL,
-        reply_to: String(senderEmail),
+        reply_to: senderEmail,
         subject: 'Message from portfolio contact form',
-        html: `<p>From: ${String(senderEmail)}</p><p>Message: ${message}</p>`,
+        text: `From: ${senderEmail}\n\nMessage: ${message}`,
       }),
     })
 
     if (!response.ok) {
-      throw new Error('Failed to send email, please try again later.')
+      console.error({ event: 'contact_email_rejected', status: response.status })
+      return { ok: false, error: deliveryError }
     }
-  } catch (error: unknown) {
-    throw new Error(getErrorMessage(error), { cause: error })
+    return { ok: true }
+  } catch {
+    console.error({ event: 'contact_email_request_failed' })
+    return { ok: false, error: deliveryError }
   }
-}
-
-function getErrorMessage(error: unknown): string {
-  let message: string
-
-  if (error instanceof Error) {
-    message = error.message
-  } else if (error && typeof error === 'object' && 'message' in error) {
-    message = String(error.message)
-  } else if (typeof error === 'string') {
-    message = error
-  } else {
-    message = 'Something went wrong'
-  }
-
-  return message
 }

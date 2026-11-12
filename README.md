@@ -10,7 +10,7 @@
 [![CodeQL](https://github.com/attila-huszar/portfolio-v2/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/attila-huszar/portfolio-v2/actions/workflows/github-code-scanning/codeql)
 [![GitHub last commit](https://img.shields.io/github/last-commit/attila-huszar/portfolio-v2/main?logo=github)](https://github.com/attila-huszar/portfolio-v2/commits/main)
 
-[<img src="https://s3.eu-central-1.amazonaws.com/attila.huszar/portfolio/portfolio-v2.webp" alt="portfolio site" width="500">](https://attila.overclocked.workers.dev/)
+[<img src="https://s3.eu-central-1.amazonaws.com/attila.huszar/portfolio/portfolio-v2.webp" alt="portfolio site" width="500">](https://attila.huszar.workers.dev/)
 
 ## Development
 
@@ -31,7 +31,8 @@ Use `npm run preview` to test the production build locally.
 ## Deployment
 
 Worker config: `cloudflare.config.ts`. For manual deployment, run
-`npx cf auth login`, then `npm run deploy`.
+`npx cf auth login`, set `CONTACT_EMAIL` in your shell, then run `npm run deploy`.
+The deploy command refuses an empty recipient; `.env.local` is for local development.
 
 | Cloudflare Git builds | Build command   | Deploy command                                       |
 | --------------------- | --------------- | ---------------------------------------------------- |
