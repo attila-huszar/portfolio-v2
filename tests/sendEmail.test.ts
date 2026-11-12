@@ -71,6 +71,9 @@ for (const binding of ['CONTACT_EMAIL', 'RESEND_API_KEY'] as const) {
     assert.match(result.error, /Failed to send email/)
     assert.equal(fetchMock.mock.callCount(), 0)
     assert.equal(errorMock.mock.callCount(), 1)
+    assert.deepEqual(errorMock.mock.calls[0].arguments, [
+      { event: 'contact_email_configuration_missing' },
+    ])
   })
 }
 

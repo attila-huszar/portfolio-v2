@@ -25,8 +25,6 @@ export const sendEmail = async (formData: FormData): Promise<SendEmailResult> =>
   if (!env.CONTACT_EMAIL?.trim() || !env.RESEND_API_KEY?.trim()) {
     console.error({
       event: 'contact_email_configuration_missing',
-      recipientConfigured: Boolean(env.CONTACT_EMAIL?.trim()),
-      apiKeyConfigured: Boolean(env.RESEND_API_KEY?.trim()),
     })
     return { ok: false, error: deliveryError }
   }
